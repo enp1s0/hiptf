@@ -1,7 +1,7 @@
 <img src="./docs/hiptf-logo.png" width="150">
 
 
-# cutf - CUDA Template Functions
+# hiptf - HIP Template Functions
 *The library of the HIP/C++ Otaku, by the HIP/C++ Otaku(?), for the HIP/C++ Otaku shall not perish from the earth.*
 
 ## Introduction
