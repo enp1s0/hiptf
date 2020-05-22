@@ -8,7 +8,7 @@ TARGETS=malloc.test
 all: $(TARGETS)
 
 %.test: %.cpp
-	$(NVCC) $(NVCCFLAGS) -o $@ $<
+	$(HIPCC) $(HIPFLAGS) -o $@ $<
 
 clean:
 	rm -f $(TARGETS)
