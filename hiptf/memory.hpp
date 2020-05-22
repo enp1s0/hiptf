@@ -18,7 +18,7 @@ template <class T>
 class host_deleter {
 public:
 	void operator()(T* ptr){
-		delete [] ptr;
+		HIPTF_HANDLE_ERROR(hipFreeHost(ptr));
 	}
 };
 
