@@ -1,6 +1,8 @@
 #ifndef __HIPTF_MEMORY_HPP__
 #define __HIPTF_MEMORY_HPP__
 #include <memory>
+#include "hip.hpp"
+#include "error.hpp"
 
 namespace hiptf {
 namespace memory {
@@ -9,7 +11,7 @@ template <class T>
 class device_deleter {
 public:
 	void operator()(T* ptr){
-		hipFree(ptr);
+		HIPTF_HANDLE_ERROR(hipFree(ptr));
 	}
 };
 template <class T>
