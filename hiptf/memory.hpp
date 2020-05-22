@@ -18,7 +18,7 @@ template <class T>
 class host_deleter {
 public:
 	void operator()(T* ptr){
-		HIPTF_HANDLE_ERROR(hipFreeHost(ptr));
+		HIPTF_HANDLE_ERROR(hipHostFree(ptr));
 	}
 };
 
@@ -38,7 +38,7 @@ inline device_unique_ptr<T> get_device_unique_ptr(const std::size_t size){
 template <class T>
 inline host_unique_ptr<T> get_host_unique_ptr(const std::size_t size){
 	T* ptr;
-	HIPTF_HANDLE_ERROR_M(hipMallocHost((void**)&ptr, sizeof(T) * size), "Failed to allocate " + std::to_string(size * sizeof(T)) + " Bytes of host memory");
+	HIPTF_HANDLE_ERROR_M(hipHostMalloc((void**)&ptr, sizeof(T) * size), "Failed to allocate " + std::to_string(size * sizeof(T)) + " Bytes of host memory");
 	return std::unique_ptr<T, host_deleter<T>>{ptr};
 }
 
