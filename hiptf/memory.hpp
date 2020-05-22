@@ -42,6 +42,18 @@ inline host_unique_ptr<T> get_host_unique_ptr(const std::size_t size){
 	return std::unique_ptr<T, host_deleter<T>>{ptr};
 }
 
+// copy
+template <class T>
+inline hipError_t copy(T* const dst, const T* const src, const std::size_t size){
+	return hipMemcpy(dst, src, sizeof(T) * size, hipMemcpyDefault);
+}
+
+// asynchronous copy
+template <class T>
+inline hipError_t copy_async(T* const dst, const T* const src, const std::size_t size, hipStream_t stream = 0){
+	return hipMemcpyAsync(dst, src, sizeof(T) * size, hipMemcpyDefault, stream);
+}
+
 } // namespace memory
 } // namespace hiptf
 
