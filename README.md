@@ -18,14 +18,19 @@ cutf is a tiny HIP template library.
 constexpr float PI = 3.f;
 constexpr std::size_t N = 15;
 
-using T = float;
+using compute_t = float;
 int main(){
+	auto dA = hiptf::memory::get_device_unique_ptr<compute_t>(N);
+	auto dB = hiptf::memory::get_device_unique_ptr<compute_t>(N);
 }
 ```
 
 ## Namespace structure
 ```
 hiptf
+├─ memory
+├─ hip
+└─ error
 ```
 
 ## Smart pointers
