@@ -35,6 +35,18 @@ CAST(double, half, __half2float(static_cast<float>(a)), a);
 CAST(double, float, static_cast<float>(a), a);
 CAST(double, double, a, a);
 
+// reinterpret
+template <class T>  __device__ inline T reinterpret(const float a);
+template <class T>  __device__ inline T reinterpret(const double a);
+template <class T>  __device__ inline T reinterpret(const long long a);
+template <class T>  __device__ inline T reinterpret(const unsigned int a);
+template <class T>  __device__ inline T reinterpret(const int a);
+REINTERPRET(float, float, unsigned int, uint);
+REINTERPRET(float, float, int, int);
+REINTERPRET(double, double, long long, longlong);
+REINTERPRET(int, int, float, float);
+REINTERPRET(unsigned int, uint, float, float);
+REINTERPRET(long long, longlong, double, double);
 
 } // namespace type
 } // namespace hiptf
