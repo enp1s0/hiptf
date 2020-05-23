@@ -30,6 +30,7 @@ int main(){
 hiptf
 ├─ memory
 ├─ hip
+├─ type
 └─ error
 ```
 
