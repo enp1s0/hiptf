@@ -1,7 +1,7 @@
 #ifndef __HIPTF_TYPE_HPP__
 #define __HIPTF_TYPE_HPP__
 
-#include <hip_fp16.h>
+#include <hip/hip_fp16.h>
 
 #define CAST(from_t, to_t, func, val) \
 	 template <> __host__ __device__ inline to_t cast<to_t>(const from_t val){return func;}
