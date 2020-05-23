@@ -3,8 +3,6 @@
 
 #define CAST(from_t, to_t, func, val) \
 	 template <> __host__ __device__ inline to_t cast<to_t>(const from_t val){return func;}
-#define REINTERPRET(src_type, src_ty, dst_type, dst_ty) \
-	 template <> __device__ inline dst_type reinterpret<dst_type>(const src_type a){return __##src_ty##_as_##dst_ty(a);}
 
 namespace hiptf {
 namespace type {
@@ -36,17 +34,9 @@ CAST(double, float, static_cast<float>(a), a);
 CAST(double, double, a, a);
 
 // reinterpret
-template <class T>  __device__ inline T reinterpret(const float a);
-template <class T>  __device__ inline T reinterpret(const double a);
-template <class T>  __device__ inline T reinterpret(const long long a);
-template <class T>  __device__ inline T reinterpret(const unsigned int a);
-template <class T>  __device__ inline T reinterpret(const int a);
-REINTERPRET(float, float, unsigned int, uint);
-REINTERPRET(float, float, int, int);
-REINTERPRET(double, double, long long, longlong);
-REINTERPRET(int, int, float, float);
-REINTERPRET(unsigned int, uint, float, float);
-REINTERPRET(long long, longlong, double, double);
+template <class T, class S>  __device__ inline T reinterpret(const S a) {
+	return *reinterpret_cast<const T*>(&a)
+}
 
 } // namespace type
 } // namespace hiptf
