@@ -37,7 +37,7 @@ CAST(double, double, a, a);
 
 // reinterpret
 template <class T, class S>  __device__ inline T reinterpret(const S a) {
-	return *reinterpret_cast<const T*>(&a)
+	return *reinterpret_cast<const T*>(&a);
 }
 
 template <class T>
