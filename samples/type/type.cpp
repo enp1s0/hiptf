@@ -7,7 +7,7 @@
 constexpr std::size_t N = 1 << 17;
 constexpr std::size_t threads_per_block = 1 << 8;
 
-__global__ void type_cast_kernel(const float* const dst_ptr, const double* const src_ptr) {
+__global__ void type_cast_kernel(float* const dst_ptr, const double* const src_ptr) {
 	const auto tid = hipThreadIdx_x + hipBlockIdx_x * hipBlockDim_x;
 
 	dst_ptr[tid] = hiptf::type::cast<float>(src_ptr[tid]);
