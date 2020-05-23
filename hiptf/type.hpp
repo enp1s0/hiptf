@@ -39,6 +39,13 @@ CAST(double, double, a, a);
 template <class T, class S>  __device__ inline T reinterpret(const S a) {
 	return *reinterpret_cast<const T*>(&a)
 }
+
+template <class T>
+__host__ __device__ inline const char* get_type_name();
+template <> __host__ __device__ inline const char* get_type_name<double >() {return "double";}
+template <> __host__ __device__ inline const char* get_type_name<float  >() {return "float";}
+template <> __host__ __device__ inline const char* get_type_name<__half >() {return "half";}
+template <> __host__ __device__ inline const char* get_type_name<__half2>() {return "half2";}
 } // namespace type
 } // namespace hiptf
 
