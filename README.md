@@ -43,6 +43,7 @@ hiptf
 ├─ memory
 ├─ hip
 ├─ type
+├─ stream
 └─ error
 ```
 
