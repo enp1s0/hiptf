@@ -11,5 +11,5 @@ int main(){
 
 	auto stream = hiptf::stream::get_stream_unique_ptr();
 
-	hiptf::memory::copy_async(dA.get(), hA.get(), N, stream.get());
+	hiptf::memory::copy_async(dA.get(), hA.get(), N, *stream.get());
 }
