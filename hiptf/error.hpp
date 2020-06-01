@@ -1,6 +1,7 @@
 #ifndef __HIPTF_ERROR_HPP__
 #define __HIPTF_ERROR_HPP__
 
+// This macro will be deleted in the future release
 #ifndef HIPTF_HANDLE_ERROR
 #define HIPTF_HANDLE_ERROR(status) hiptf::error::check(status, __FILE__, __LINE__, __func__)
 #endif
