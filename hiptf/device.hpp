@@ -6,6 +6,19 @@
 
 namespace hiptf {
 namespace device {
+inline std::vector<hipDeviceProp_t> get_properties_vector(){
+	int n;
+	hipGetDeviceCount(&n);
+	std::vector<hipDeviceProp_t> properties_vector;
+	for(int i = 0; i < n; i++){
+		hipDeviceProp_t property;
+		hipGetDeviceProperties(&property, i);
+		properties_vector.push_back(property);
+	}
+
+	return properties_vector;
+}
+
 inline std::size_t get_num_devices() {
 	int n;
 	hipGetDeviceCount(&n);
