@@ -10,7 +10,7 @@ template<>  __device__ inline float func<float>(const float a){return func##f(a)
 #define SPEC_MATH_FUNC_1_d( func ) \
 template<>  __device__ inline double func<double>(const double a){return func(a);}
 
-#define MATH_FUNC(func) \
+#define MATH_FUNC_1(func) \
 	DEF_TEMPLATE_MATH_FUNC_1(func) \
 	SPEC_MATH_FUNC_1_f(func) \
 	SPEC_MATH_FUNC_1_d(func)
@@ -23,7 +23,7 @@ template<>  __device__ inline float func<float>(const float a, const float b){re
 #define SPEC_MATH_FUNC_2_d( func ) \
 template<>  __device__ inline double func<double>(const double a, const double b){return func(a, b);}
 
-#define MATH_FUNC(func) \
+#define MATH_FUNC_2(func) \
 	DEF_TEMPLATE_MATH_FUNC_2(func) \
 	SPEC_MATH_FUNC_2_f(func) \
 	SPEC_MATH_FUNC_2_d(func)
