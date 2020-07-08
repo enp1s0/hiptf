@@ -4,13 +4,14 @@
 #include <hip/hip_runtime_api.h>
 #include <hiptf/memory.hpp>
 #include <hiptf/math.hpp>
+#include <hiptf/error.hpp>
 
-constexpr std::size_t N = 1 << 17;
+constexpr std::size_t N = 1 << 18;
 constexpr std::size_t threads_per_block = 1 << 8;
 
 using compute_t = float;
 
-__global__ void type_cast_kernel(compute_t* const dst_ptr, const compute_t* const src_ptr) {
+__global__ void sin_kernel(compute_t* const dst_ptr, const compute_t* const src_ptr) {
 	const auto tid = hipThreadIdx_x + hipBlockIdx_x * hipBlockDim_x;
 
 	dst_ptr[tid] = hiptf::math::sin<compute_t>(src_ptr[tid]);
@@ -27,7 +28,7 @@ int main(){
 	}
 
 	hiptf::memory::copy(dA.get(), hA.get(), N);
-	hipLaunchKernelGGL(type_cast_kernel, dim3(N / threads_per_block, 1, 1), dim3(threads_per_block, 1, 1), 0, 0, dA.get(), dB.get());
+	hipLaunchKernelGGL(sin_kernel, dim3(N / threads_per_block, 1, 1), dim3(threads_per_block, 1, 1), 0, 0, dB.get(), dA.get());
 	hiptf::memory::copy(hB.get(), dB.get(), N);
 
 	double max_error = 0;
