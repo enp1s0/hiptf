@@ -31,6 +31,7 @@ template<>  __device__ inline double func<double>(const double a, const double b
 namespace hiptf {
 namespace math {
 
+// Unary functions
 MATH_FUNC_1(acos);
 MATH_FUNC_1(acosh);
 MATH_FUNC_1(asin);
@@ -75,7 +76,7 @@ MATH_FUNC_1(rint);
 MATH_FUNC_1(y0);
 MATH_FUNC_1(y1);
 
-// 2-
+// Binary functions
 MATH_FUNC_2(atan2);
 MATH_FUNC_2(copysign);
 MATH_FUNC_2(fdim);
