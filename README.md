@@ -40,17 +40,19 @@ int main(){
 ## Namespace structure
 ```
 hiptf
-├─ memory
 ├─ hip
-├─ type
+├─ math
+├─ memory
 ├─ stream
+├─ type
 └─ error
 ```
 
 ## Smart pointers
 [Smart pointers Reference](./docs/smart_ptr.md)
 
-## CUDA Functions
+## HIP Functions
+[hiptf HIP Functions Reference](./docs/hip.md)
 
 ## License
 Copyright (c) 2018 - 2019 tsuki (enp1s0)  
