@@ -1,7 +1,7 @@
 # HIP Functions
 ## math
 ```cpp
-// x : half, half2, float, double
+// x : float, double
 hiptf::math::[operation](x);
 ```
 
