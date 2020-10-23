@@ -2,6 +2,7 @@
 #define __HIPTF_DEVICE_HPP__
 #include <cstddef>
 #include <functional>
+#include <vector>
 #include <hip/hip_runtime.h>
 
 namespace hiptf {
