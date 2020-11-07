@@ -43,6 +43,7 @@ hiptf
 ├─ hip
 ├─ math
 ├─ memory
+├─ rsmi
 ├─ stream
 ├─ type
 └─ error
@@ -55,6 +56,6 @@ hiptf
 [hiptf HIP Functions Reference](./docs/hip.md)
 
 ## License
-Copyright (c) 2018 - 2019 tsuki (enp1s0)  
+Copyright (c) 2018 - 2020 tsuki (enp1s0)  
 Released under the MIT license  
 <img src="http://momo86.net/ipsolab.svg" width="120">

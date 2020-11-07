@@ -64,3 +64,7 @@ hiptf::math::[operation](x);
 - `fdivide`
 - `rhypot`
 
+
+## rsmi
+
+This namespace is a utility for rocm_smi library.
