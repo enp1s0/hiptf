@@ -52,7 +52,7 @@ template <class T>
 inline void print_matrix_from_host(const T* const ptr, const std::size_t m, const std::size_t n, const std::size_t ldm, const char* const name = nullptr) {
 	HIPTF_CHECK_ERROR(hipDeviceSynchronize());
 	auto host_uptr = hiptf::memory::get_host_unique_ptr<T>(ldm * n);
-	hiptf::memory::copy(host_uptr.get(), ptr, ldm * n);
+	HIPTF_CHECK_ERROR(hiptf::memory::copy(host_uptr.get(), ptr, ldm * n));
 
 	print_matrix(host_uptr.get(), m, n, ldm, name);
 }
@@ -61,7 +61,7 @@ template <class T>
 inline void print_matrix_from_host(const T* const ptr, const std::size_t m, const std::size_t n, const char* const name = nullptr) {
 	HIPTF_CHECK_ERROR(hipDeviceSynchronize());
 	auto host_uptr = hiptf::memory::get_host_unique_ptr<T>(m * n);
-	hiptf::memory::copy(host_uptr.get(), ptr, m * n);
+	HIPTF_CHECK_ERROR(hiptf::memory::copy(host_uptr.get(), ptr, m * n));
 
 	print_matrix(host_uptr.get(), m, n, name);
 }
@@ -70,7 +70,7 @@ template <class T>
 inline void print_numpy_matrix_from_host(const T* const ptr, const std::size_t m, const std::size_t n, const std::size_t ldm, const char* const name = nullptr) {
 	HIPTF_CHECK_ERROR(hipDeviceSynchronize());
 	auto host_uptr = hiptf::memory::get_host_unique_ptr<T>(ldm * n);
-	hiptf::memory::copy(host_uptr.get(), ptr, ldm * n);
+	HIPTF_CHECK_ERROR(hiptf::memory::copy(host_uptr.get(), ptr, ldm * n));
 
 	print_numpy_matrix(host_uptr.get(), m, n, ldm, name);
 }
@@ -79,7 +79,7 @@ template <class T>
 inline void print_numpy_matrix_from_host(const T* const ptr, const std::size_t m, const std::size_t n, const char* const name = nullptr) {
 	HIPTF_CHECK_ERROR(hipDeviceSynchronize());
 	auto host_uptr = hiptf::memory::get_host_unique_ptr<T>(m * n);
-	hiptf::memory::copy(host_uptr.get(), ptr, m * n);
+	HIPTF_CHECK_ERROR(hiptf::memory::copy(host_uptr.get(), ptr, m * n));
 
 	print_numpy_matrix(host_uptr.get(), m, n, name);
 }
